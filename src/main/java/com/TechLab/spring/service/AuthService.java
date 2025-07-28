@@ -3,6 +3,7 @@ package com.TechLab.spring.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.TechLab.spring.model.Usuario;
 import com.TechLab.spring.model.Role;
 import com.TechLab.spring.repository.UserRepository;
@@ -37,7 +38,7 @@ public class AuthService {
     public Optional<Usuario> authenticate(String username, String password) {
         Optional<Usuario> userOpt = userRepo.findByUsername(username);
         if (userOpt.isPresent() && passwordEncoder.matches(password, userOpt.get().getPassword())) {
-            return userOpt;
+           return userOpt;
         }
         return Optional.empty();
     }
